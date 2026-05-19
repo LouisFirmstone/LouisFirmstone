@@ -20,14 +20,26 @@
   body{background:var(--bg-deep);color:var(--text-primary);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6;overflow-x:hidden}
   body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:.4}
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(12,10,26,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+  /* Ticker */
+  .ticker-wrap{position:fixed;top:0;left:0;right:0;z-index:200;background:#07061a;border-bottom:1px solid rgba(108,99,224,.35);height:30px;overflow:hidden;display:flex;align-items:center}
+  .ticker-track{display:flex;align-items:center;white-space:nowrap;animation:ticker 60s linear infinite}
+  .ticker-track:hover{animation-play-state:paused}
+  .ticker-item{display:inline-flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.07em;color:rgba(240,238,255,.55);border-right:1px solid rgba(108,99,224,.15);flex-shrink:0}
+  .ticker-item .lbl{color:rgba(240,238,255,.25);font-size:.52rem;letter-spacing:.1em}
+  .ticker-item .val{color:rgba(240,238,255,.9);font-weight:700}
+  .ticker-item .grn{color:#39e8a2}
+  .ticker-item .pur{color:#9b94ff}
+  .ticker-div{display:inline-block;width:2px;height:10px;background:rgba(108,99,224,.5);margin:0 1rem;flex-shrink:0}
+  @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+  nav{position:fixed;top:30px;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(12,10,26,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
   .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.15em;color:var(--text-primary);text-decoration:none}
   .nav-logo span{color:var(--purple-bright)}
   .nav-links{display:flex;gap:2rem;list-style:none}
   .nav-links a{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;transition:color .2s}
   .nav-links a:hover{color:var(--purple-glow)}
 
-  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden}
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:10rem 3rem 4rem;position:relative;overflow:hidden}
   .glow1{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(72,63,173,.28) 0%,transparent 70%);top:-100px;right:-200px;pointer-events:none}
   .glow2{position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(57,232,162,.07) 0%,transparent 70%);bottom:100px;left:-100px;pointer-events:none}
   .eyebrow{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-green);margin-bottom:1.5rem;opacity:0;animation:fu .8s .2s forwards}
@@ -126,7 +138,8 @@
   ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg-deep)}::-webkit-scrollbar-thumb{background:var(--purple-muted);border-radius:2px}
 
   @media(max-width:768px){
-    nav{padding:1rem 1.5rem}.nav-links{display:none}
+    .ticker-wrap{display:none}
+    nav{top:0;padding:1rem 1.5rem}.nav-links{display:none}
     .sw{padding:4rem 1.5rem}.hero{padding:6rem 1.5rem 3rem}
     .wc.f,.wc.s,.wc.t,.wc.h,.wc.fw{grid-column:span 12}
     .wg,.dg,.mg,.mog,.al,.an{grid-template-columns:1fr}
@@ -136,6 +149,46 @@
 </style>
 </head>
 <body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <div class="ticker-item"><span class="lbl">Monthly Views</span>&nbsp;<span class="val grn">15M+</span></div>
+    <div class="ticker-item"><span class="lbl">TikTok Likes</span>&nbsp;<span class="val pur">10.2M</span></div>
+    <div class="ticker-item"><span class="lbl">Single Video</span>&nbsp;<span class="val">5.3M views</span></div>
+    <div class="ticker-item"><span class="lbl">App Signup Growth</span>&nbsp;<span class="val grn">294%</span></div>
+    <div class="ticker-item"><span class="lbl">Followers</span>&nbsp;<span class="val">100K+</span></div>
+    <div class="ticker-item"><span class="lbl">VerseNation Teams</span>&nbsp;<span class="val pur">50K+</span></div>
+    <div class="ticker-item"><span class="lbl">Gorilla Drop</span>&nbsp;<span class="val grn">1.2M views · $0 spend</span></div>
+    <div class="ticker-item"><span class="lbl">Instagram Memes</span>&nbsp;<span class="val">1.2M · 1M · 1.1M</span></div>
+    <div class="ticker-item"><span class="lbl">Pop Culture Memes</span>&nbsp;<span class="val pur">637K · 590K · 449K</span></div>
+    <div class="ticker-item"><span class="lbl">Fantasy Football TikTok</span>&nbsp;<span class="val">5.3M · 752K · 422K</span></div>
+    <div class="ticker-item"><span class="lbl">Viral Streaks</span>&nbsp;<span class="val grn">100K–386K back to back</span></div>
+    <div class="ticker-item"><span class="lbl">Creator League</span>&nbsp;<span class="val">12 creators · NFL Draft window</span></div>
+    <div class="ticker-item"><span class="lbl">Live Viewers</span>&nbsp;<span class="val pur">200+ on command</span></div>
+    <div class="ticker-item"><span class="lbl">STARTies 2025</span>&nbsp;<span class="val grn">Marketing Genius Finalist</span></div>
+    <div class="ticker-item"><span class="lbl">FantasyPros</span>&nbsp;<span class="val">Official Integration Partner</span></div>
+    <div class="ticker-item"><span class="lbl">Platforms</span>&nbsp;<span class="val pur">TikTok · IG · YouTube · Reddit</span></div>
+    <div class="ticker-div"></div>
+    <!-- duplicate for seamless loop -->
+    <div class="ticker-item"><span class="lbl">Monthly Views</span>&nbsp;<span class="val grn">15M+</span></div>
+    <div class="ticker-item"><span class="lbl">TikTok Likes</span>&nbsp;<span class="val pur">10.2M</span></div>
+    <div class="ticker-item"><span class="lbl">Single Video</span>&nbsp;<span class="val">5.3M views</span></div>
+    <div class="ticker-item"><span class="lbl">App Signup Growth</span>&nbsp;<span class="val grn">294%</span></div>
+    <div class="ticker-item"><span class="lbl">Followers</span>&nbsp;<span class="val">100K+</span></div>
+    <div class="ticker-item"><span class="lbl">VerseNation Teams</span>&nbsp;<span class="val pur">50K+</span></div>
+    <div class="ticker-item"><span class="lbl">Gorilla Drop</span>&nbsp;<span class="val grn">1.2M views · $0 spend</span></div>
+    <div class="ticker-item"><span class="lbl">Instagram Memes</span>&nbsp;<span class="val">1.2M · 1M · 1.1M</span></div>
+    <div class="ticker-item"><span class="lbl">Pop Culture Memes</span>&nbsp;<span class="val pur">637K · 590K · 449K</span></div>
+    <div class="ticker-item"><span class="lbl">Fantasy Football TikTok</span>&nbsp;<span class="val">5.3M · 752K · 422K</span></div>
+    <div class="ticker-item"><span class="lbl">Viral Streaks</span>&nbsp;<span class="val grn">100K–386K back to back</span></div>
+    <div class="ticker-item"><span class="lbl">Creator League</span>&nbsp;<span class="val">12 creators · NFL Draft window</span></div>
+    <div class="ticker-item"><span class="lbl">Live Viewers</span>&nbsp;<span class="val pur">200+ on command</span></div>
+    <div class="ticker-item"><span class="lbl">STARTies 2025</span>&nbsp;<span class="val grn">Marketing Genius Finalist</span></div>
+    <div class="ticker-item"><span class="lbl">FantasyPros</span>&nbsp;<span class="val">Official Integration Partner</span></div>
+    <div class="ticker-item"><span class="lbl">Platforms</span>&nbsp;<span class="val pur">TikTok · IG · YouTube · Reddit</span></div>
+  </div>
+</div>
 
 <nav>
   <a href="#" class="nav-logo">Louis <span>Firmstone</span></a>
@@ -229,7 +282,7 @@
       <div class="cm">
         <div class="vid-wrap">
           <video autoplay muted loop playsinline id="vid-live">
-            <source src="ig-content-1.mp4" type="video/mp4">
+            <source src="podcast-content.mp4" type="video/mp4">
           </video>
           <button class="mute-btn" onclick="toggleMute('vid-live',this)">🔇 Sound</button>
         </div>
@@ -338,7 +391,7 @@
 <section id="numbers" class="sw" style="background:var(--bg-card);max-width:100%;padding:6rem 3rem;">
   <div style="max-width:1200px;margin:0 auto;">
     <div class="sec-label">03 Proof of Scale</div>
-    <h2 class="sec-title">10.2M Likes.<br>5.3M on One Video.</h2>
+    <h2 class="sec-title">15M+ Monthly Views.<br>100K Followers Across<br>All Platforms.</h2>
     <p class="sec-body">This is what happens when the right content hits the right community at the right moment.</p>
     <div class="mg">
       <div class="mc"><img src="tiktok-10m-likes.jpeg" alt="10M Likes"><div class="ml"><strong>10.2M TikTok Likes · 35K Followers</strong>How @versefantasy hit 10 million likes</div></div>
@@ -399,7 +452,7 @@
       </div>
     </div>
     <div class="an">
-      <div class="anc"><div class="anum">10.2M</div><div class="albl">TikTok likes built from scratch</div></div>
+      <div class="anc"><div class="anum">15M+</div><div class="albl">Views across platforms monthly during peak</div></div>
       <div class="anc"><div class="anum">0→100K</div><div class="albl">Followers across all platforms</div></div>
       <div class="anc"><div class="anum">294%</div><div class="albl">App sign up growth</div></div>
       <div class="anc"><div class="anum">50K+</div><div class="albl">Fantasy teams on VerseNation</div></div>
