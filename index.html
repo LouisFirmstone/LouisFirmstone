@@ -79,7 +79,8 @@
   .wc:hover{border-color:var(--purple-bright);transform:translateY(-4px)}
   .wc.f{grid-column:span 8}.wc.s{grid-column:span 4}.wc.t{grid-column:span 4}.wc.h{grid-column:span 6}.wc.fw{grid-column:span 12}
   .cm{width:100%;aspect-ratio:16/9;background:var(--bg-elevated);position:relative;overflow:hidden}
-  .cm.wide{aspect-ratio:16/7}
+  .cm.wide{aspect-ratio:4/3}
+  .cm.tall{aspect-ratio:9/16}
   .cm iframe{width:100%;height:100%;border:none}
   .cm img{width:100%;height:100%;object-fit:cover;display:block}
   .cc{padding:1.5rem}
@@ -262,9 +263,7 @@
     </div>
 
     <div class="wc s">
-      <div class="cm">
-        <div class="vid-wrap">
-          <video autoplay muted loop playsinline id="vid-creator">
+      <div class="cm tall">
             <source src="CreatorLeagueSound.mp4" type="video/mp4">
           </video>
           <button class="mute-btn" onclick="toggleMute('vid-creator',this)">🔇 Sound</button>
@@ -279,7 +278,7 @@
     </div>
 
     <div class="wc s">
-      <div class="cm">
+      <div class="cm tall">
         <div class="vid-wrap">
           <video autoplay muted loop playsinline id="vid-live">
             <source src="podcast-content.mp4" type="video/mp4">
